@@ -2,6 +2,10 @@
   padding-top: 30px;
 }
 
+.menu--stiky + .container .goods {
+  margin-top: 25px;
+}
+
 .goods .left {
   width: 270px;
   float: left;
