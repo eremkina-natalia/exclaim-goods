@@ -29,15 +29,19 @@ function createItemNode (item) {
 }
 
 var scrollTop = document.body.scrollTop;
+var isDataLoad = false;
+
 function dataScroll() {
   var scrollTop = document.body.scrollTop;
-  if (scrollTop >= document.body.offsetHeight - window.innerHeight){
+  if (document.body.scrollTop >= document.body.offsetHeight - window.innerHeight && !isDataLoad){
+    isDataLoad = true;
     loadJSON('data.json', function (data) {
       var nodes = data.goods.map(createItemNode);
       nodes.forEach(function (itemNode) {
         elementsNode.appendChild(itemNode);
       })
     });
+    isDataLoad = false;
   }
 };
 document.addEventListener('scroll', dataScroll);
