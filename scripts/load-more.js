@@ -27,27 +27,11 @@ function createItemNode (item) {
 
   return itemNode;
 }
-/*function moreButtonClickHandler () {
-  loadJSON('data.json', function (data) {
-    var nodes = data.goods.map(createItemNode);
-    nodes.forEach(function (itemNode) {
-      elementsNode.appendChild(itemNode);
-    })
-  });
-}
-moreButton.addEventListener('click', moreButtonClickHandler);*/
 
 var scrollTop = document.body.scrollTop;
 function dataScroll() {
   var scrollTop = document.body.scrollTop;
-//  var offsetTop = document.body.offsetTop;
-//  var clientHeight = document.body.clientHeight;
-//console.log('offsetTop ' + offsetTop); //0
-//console.log('scrollTop ' + scrollTop); //828
-//console.log('clientHeight ' + clientHeight); //1345
-//console.log('window.pageYOffset ' +window.pageYOffset); //828
-//console.log('scrollHeight ' +document.body.scrollHeight); //1345
-  if (scrollTop > document.body.offsetHeight - 550){
+  if (scrollTop >= document.body.offsetHeight - window.innerHeight){
     loadJSON('data.json', function (data) {
       var nodes = data.goods.map(createItemNode);
       nodes.forEach(function (itemNode) {
