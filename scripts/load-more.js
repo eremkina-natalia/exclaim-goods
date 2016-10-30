@@ -29,11 +29,15 @@ function createItemNode (item) {
 }
 
 var scrollTop = document.body.scrollTop;
+var height = document.body.offsetHeight;
 var isDataLoad = false;
 
 function dataScroll() {
   var scrollTop = document.body.scrollTop;
-  if (document.body.scrollTop >= document.body.offsetHeight - window.innerHeight && !isDataLoad){
+  if (document.body.offsetHeight != height){
+    isDataLoad = false;
+  }
+  if (scrollTop >= document.body.offsetHeight - window.innerHeight && !isDataLoad){
     isDataLoad = true;
     loadJSON('data.json', function (data) {
       var nodes = data.goods.map(createItemNode);
@@ -41,7 +45,6 @@ function dataScroll() {
         elementsNode.appendChild(itemNode);
       })
     });
-    isDataLoad = false;
   }
 };
 document.addEventListener('scroll', dataScroll);
